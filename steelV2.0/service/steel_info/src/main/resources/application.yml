@@ -1,0 +1,32 @@
+server:
+  port: 8110 # 服务端口
+  tomcat:
+    max-threads: 10 #tomcat的最大并发值修改为10,默认是200
+
+spring:
+  profiles:
+    active: dev # 环境设置
+  application:
+    name: steel_info # 服务名
+  datasource: # mysql数据库连接
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/steel?serverTimezone=GMT%2B8&&useSSL=false
+    username: root
+    password: 150225
+
+  #spring:
+  jackson: #返回json的全局时间格式
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+  #spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 # nacos服务地址
+
+#mybatis日志
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:com/lflong/steel/info/mapper/xml/*.xml
